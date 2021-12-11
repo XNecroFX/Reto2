@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
+    
     @Autowired
     private UserService servicio;
     
@@ -27,6 +28,12 @@ public class UserController {
         return servicio.listAll();
     }
 
+    @PostMapping("/new")
+    @ResponseStatus(HttpStatus.CREATED)
+    public User create(@RequestBody User user) {
+        return servicio.create(user);
+    }
+    
     @GetMapping("/emailexist/{email}")
     public boolean emailExists(@PathVariable("email") String email) {
         return servicio.emailExists(email);
@@ -35,12 +42,6 @@ public class UserController {
     @GetMapping("/{email}/{password}")
     public User autenticateUser(@PathVariable("email") String email, @PathVariable("password") String password) {
         return servicio.autenticateUser(email, password);
-    }
-
-    @PostMapping("/new")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User create(@RequestBody User user) {
-        return servicio.create(user);
     }
 
     @PutMapping("/update")
@@ -54,5 +55,4 @@ public class UserController {
     public boolean delete(@PathVariable("id") int id){
         return servicio.delete(id);
     }
-    
 }

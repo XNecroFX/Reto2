@@ -90,21 +90,10 @@ public class UserService {
     }
 
     public boolean delete(int userId) {
-        Optional<User> usuario = getUser(userId);
-        
-        if (usuario.isEmpty()){
-            return false;
-        }else{
-            repositorio.delete(usuario.get());
-            return true;
-        }
-        /*
         Boolean aBoolean = getUser(userId).map(user -> {
             repositorio.delete(user);
             return true;
         }).orElse(false);
         return aBoolean;
-
-        */
     }
 }

@@ -9,38 +9,26 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProductRepository {
-    @Autowired
-    private ProductCrudRepository productCrudRepository;
+   @Autowired
+    private ProductCrudRepository crudInterface;
 
-    public Product createProduct(Product product) {
-        return productCrudRepository.save(product);
-    }
-
-    public void updateProduct(Product product) {
-        productCrudRepository.save(product);
+    public List<Product> listAll() {
+        return crudInterface.findAll();
     }
 
-    public List< Product> getAllProduct() {
-        return productCrudRepository.findAll();
+    public Optional<Product> getProduct(String reference) {
+        return crudInterface.findById(reference);
     }
 
-    public Optional<Product> getProductById(String productId) {
-        return productCrudRepository.findById(productId);
+    public Product create(Product product) {
+        return crudInterface.save(product);
     }
 
-    public void deleteProduct(Product product) {
-        productCrudRepository.delete(product);
-    }  
-    
-    public List<Product> productosxPrecio(double price){
-        return productCrudRepository.findByPriceLessThanEqual(price);
+    public void update(Product product) {
+        crudInterface.save(product);
     }
-    
-    public List<Product> productosxCategoria(String category){
-        return productCrudRepository.findByCategory(category);
+
+    public void delete(Product product) {
+        crudInterface.delete(product);
     }
-    
-    /*public List<Product> productosxNombre(String nombre){
-        return productCrudRepository.findByNombreLike(nombre);
-    }*/
 }

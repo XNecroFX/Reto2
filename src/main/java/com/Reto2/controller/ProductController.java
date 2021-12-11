@@ -3,6 +3,7 @@ package com.Reto2.controller;
 import com.Reto2.model.Product;
 import com.Reto2.service.ProductService;
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,58 +18,40 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@CrossOrigin(origins = "*")
+
 @RestController
-@RequestMapping("/api/productos")
+@RequestMapping("/api/cleaningproduct")
 public class ProductController {
+    
     @Autowired
     private ProductService productService;
    
     @GetMapping("/all")
-    public List<Product> getAllProduct(){
-        return productService.getAllProduct();
+    public List<Product> listAll(){
+        return productService.listAll();
     }
 
-    @GetMapping("/{id}")
-    public Product getProduct(@PathVariable("id") String id) {
-        return productService.getProductById(id).get();
+    @GetMapping("/{reference}")
+    public Optional<Product> getProduct(@PathVariable("reference") String reference) {
+        return productService.getProduct(reference);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
-        return productService.createProduct(product);
+        return productService.create(product);
     }
+
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
     public Product update(@RequestBody Product product) {
-        return productService.updateProduct(product);
+        return productService.update(product);
     }
 
-    /*@DeleteMapping("/{id}")
+    @DeleteMapping("/{reference}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int id) {
-        return productService.deleteProduct(id);
-    }*/
-    
-    @GetMapping("/categoria/{categoria}")
-    public List<Product> productosxCategoria(@PathVariable("categoria") String categoria){
-        return productService.productosxCategoria(categoria);
+    public boolean delete(@PathVariable("reference") String reference) {
+        return productService.delete(reference);
     }
     
-    @GetMapping("/precio/{precio}")
-    public List<Product> productosxPrecio(@PathVariable("precio") double precio){
-        return productService.productosxPrecio(precio);
-    }
-    
-    /*@GetMapping("/nombre/{nombre}")
-    public List<Product> productosxNombre(@PathVariable("nombre") String nombre){
-        return productService.productosxNombre(nombre);
-    }*/
-    
-    
-    /*@GetMapping("/categorias")
-    public List<String> categorias(){
-        return productService.getAllCategories();
-    } */
 }

@@ -1,28 +1,29 @@
 package com.Reto2;
 
 import com.Reto2.repository.crud.ProductCrudRepository;
+import com.Reto2.repository.crud.UserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.mongodb.core.MongoTemplate;
 
 @SpringBootApplication
 public class Reto2Application implements CommandLineRunner {
-
-	public static void main(String[] args) {
-		SpringApplication.run(Reto2Application.class, args);
-	}
-
-     @Override
-    public void run(String... args) throws Exception {
-    }
-
+    
+    @Autowired
+    private UserCrudRepository userCrudRepository;
     @Autowired
     private ProductCrudRepository productCrudRepository;
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+    public static void main(String[] args) {
+	SpringApplication.run(Reto2Application.class, args);
+    }
 
-    
+    @Override
+    public void run(String... args) throws Exception {
+      System.out.println("Aqui se ejecutaran la creación de documentos de mongo...");
+        
+        userCrudRepository.deleteAll();
+        productCrudRepository.deleteAll();  
+    }
 }

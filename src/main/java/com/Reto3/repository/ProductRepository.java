@@ -12,7 +12,7 @@ public class ProductRepository {
    @Autowired
     private ProductCrudRepository crudInterface;
 
-    public List<Product> listAll() {
+    public List<Product> getAll() {
         return crudInterface.findAll();
     }
 

@@ -27,8 +27,8 @@ public class ProductController {
     private ProductService productService;
    
     @GetMapping("/all")
-    public List<Product> listAll(){
-        return productService.listAll();
+    public List<Product> getAll(){
+        return productService.getAll();
     }
 
     @GetMapping("/{reference}")
@@ -36,7 +36,7 @@ public class ProductController {
         return productService.getProduct(reference);
     }
 
-    @PostMapping("/all")
+    @PostMapping("/new")
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
         return productService.create(product);

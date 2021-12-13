@@ -13,43 +13,37 @@ public class UserService {
     @Autowired
     private UserRepository repositorio;
     
+    public List<User> getAll() {
+        return repositorio.getAll();
+    }
+
     public Optional<User> getUser(int id) {
+        
         return repositorio.getUser(id);
     }
 
-    public List<User> listAll() {
-        return repositorio.listAll();
-    }
-
-    public boolean emailExists(String email) {
-        return repositorio.emailExists(email);
-    }
-
-    public User autenticateUser(String email, String password) {
-        Optional<User> usuario = repositorio.autenticateUser(email, password);
-
-        if (usuario.isEmpty()) {
-            return new User();
-        } else {
-            return usuario.get();
-        }
-    }
-
     public User create(User user) {
+        
+        Optional<User> userIdMaximo = repositorio.lastUserId();
+        
         if (user.getId() == null) {
-            return user;
-        } else {
-            Optional<User> e = repositorio.getUser(user.getId());
-            if (e.isEmpty()) {
-                if (emailExists(user.getEmail()) == false) {
-                    return repositorio.create(user);
-                } else {
-                    return user;
-                }
-            } else {
+            if (userIdMaximo.isEmpty())
+                user.setId(1);
+            else
+                user.setId(userIdMaximo.get().getId() + 1);
+        }
+        
+        Optional<User> e = repositorio.getUser(user.getId());
+        if (e.isEmpty()) {
+            if (emailExists(user.getEmail())==false){
+                return repositorio.create(user);
+            }else{
                 return user;
             }
+        }else{
+            return user;
         }
+        
     }
 
     public User update(User user) {
@@ -78,7 +72,7 @@ public class UserService {
                 if (user.getZone() != null) {
                     userDb.get().setZone(user.getZone());
                 }
-
+                
                 repositorio.update(userDb.get());
                 return userDb.get();
             } else {
@@ -88,12 +82,26 @@ public class UserService {
             return user;
         }
     }
-
+    
     public boolean delete(int userId) {
         Boolean aBoolean = getUser(userId).map(user -> {
             repositorio.delete(user);
             return true;
         }).orElse(false);
         return aBoolean;
+    }
+    
+    public boolean emailExists(String email) {
+        return repositorio.emailExists(email);
+    }
+
+    public User authenticateUser(String email, String password) {
+        Optional<User> usuario = repositorio.authenticateUser(email, password);
+
+        if (usuario.isEmpty()) {
+            return new User();
+        } else {
+            return usuario.get();
+        }
     }
 }

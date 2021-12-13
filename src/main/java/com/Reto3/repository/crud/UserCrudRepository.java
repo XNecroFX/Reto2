@@ -1,6 +1,6 @@
-package com.Reto2.repository.crud;
+package com.Reto3.repository.crud;
 
-import com.Reto2.model.User;
+import com.Reto3.model.User;
 import java.util.Optional;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

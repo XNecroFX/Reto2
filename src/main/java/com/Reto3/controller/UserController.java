@@ -1,8 +1,8 @@
 
-package com.Reto2.controller;
+package com.Reto3.controller;
 
-import com.Reto2.model.User;
-import com.Reto2.service.UserService;
+import com.Reto3.model.User;
+import com.Reto3.service.UserService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

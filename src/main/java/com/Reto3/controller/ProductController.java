@@ -1,7 +1,7 @@
-package com.Reto2.controller;
+package com.Reto3.controller;
 
-import com.Reto2.model.Product;
-import com.Reto2.service.ProductService;
+import com.Reto3.model.Product;
+import com.Reto3.service.ProductService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +36,7 @@ public class ProductController {
         return productService.getProduct(reference);
     }
 
-    @PostMapping("/new")
+    @PostMapping("/all")
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@RequestBody Product product) {
         return productService.create(product);

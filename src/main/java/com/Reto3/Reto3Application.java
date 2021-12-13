@@ -1,22 +1,25 @@
-package com.Reto2;
+package com.Reto3;
 
-import com.Reto2.repository.crud.ProductCrudRepository;
-import com.Reto2.repository.crud.UserCrudRepository;
+import com.Reto3.repository.crud.OrderCrudRepository;
+import com.Reto3.repository.crud.ProductCrudRepository;
+import com.Reto3.repository.crud.UserCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Reto2Application implements CommandLineRunner {
+public class Reto3Application implements CommandLineRunner {
     
     @Autowired
     private UserCrudRepository userCrudRepository;
     @Autowired
     private ProductCrudRepository productCrudRepository;
+    @Autowired
+    private OrderCrudRepository orderCrudRepository;
 
     public static void main(String[] args) {
-	SpringApplication.run(Reto2Application.class, args);
+	SpringApplication.run(Reto3Application.class, args);
     }
 
     @Override

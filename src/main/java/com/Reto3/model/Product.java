@@ -1,4 +1,4 @@
-package com.Reto2.model;
+package com.Reto3.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

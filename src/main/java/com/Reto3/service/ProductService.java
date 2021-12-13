@@ -1,7 +1,7 @@
-package com.Reto2.service;
+package com.Reto3.service;
 
-import com.Reto2.model.Product;
-import com.Reto2.repository.ProductRepository;
+import com.Reto3.model.Product;
+import com.Reto3.repository.ProductRepository;
 import com.mongodb.client.DistinctIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;

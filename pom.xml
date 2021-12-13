@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.retodos</groupId>
-    <artifactId>Reto2</artifactId>
+    <artifactId>Reto3</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>Reto2</name>
+    <name>Reto3</name>
     <description>Solución reto2 en vivo</description>
     <properties>
         <java.version>11</java.version>

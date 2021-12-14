@@ -13,8 +13,8 @@ public class UserService {
     @Autowired
     private UserRepository repositorio;
     
-    public List<User> listAll() {
-        return repositorio.listAll();
+    public List<User> getAll() {
+        return repositorio.getAll();
     }
 
     public Optional<User> getUser(int id) {

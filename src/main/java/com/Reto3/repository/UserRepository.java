@@ -14,7 +14,7 @@ public class UserRepository {
     @Autowired
     private UserCrudRepository crudInterface;
 
-    public List<User> listAll() {
+    public List<User> getAll() {
         return (List<User>) crudInterface.findAll();
     }
 

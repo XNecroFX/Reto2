@@ -74,4 +74,5 @@ public class OrderController {
     public List<Order> ordersSalesManByDate(@PathVariable("date")String dateStr, @PathVariable("id")Integer id){
         return orderService.ordersSalesManByDate(dateStr, id);
     }
+    
 }

@@ -1,7 +1,7 @@
-package com.Reto3.repository;
+package com.Reto4.repository;
 
-import com.Reto3.model.Product;
-import com.Reto3.repository.crud.ProductCrudRepository;
+import com.Reto4.model.Product;
+import com.Reto4.repository.crud.ProductCrudRepository;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;

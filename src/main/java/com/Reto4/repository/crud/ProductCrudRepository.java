@@ -1,6 +1,6 @@
-package com.Reto3.repository.crud;
+package com.Reto4.repository.crud;
 
-import com.Reto3.model.Product;
+import com.Reto4.model.Product;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 

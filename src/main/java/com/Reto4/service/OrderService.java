@@ -73,15 +73,15 @@ public class OrderService {
     }
     
     //Reto4
-    public List<Order> ordersSalesManByID(Integer id){
+    public List<Order> ordersSalesManByID(int id) {
         return orderRepository.ordersSalesManByID(id);
     }
     
-    public List<Order> ordersSalesManByState(String state, Integer id){
-        return orderRepository.ordersSalesManByState(state, id);
+    public List<Order> ordersSalesManByDate(String dateStr, int id) {
+        return orderRepository.ordersSalesManByDate(dateStr, id);
     }
     
-    public List<Order> ordersSalesManByDate(String dateStr, Integer id){
-        return orderRepository.ordersSalesManByDate(dateStr, id);
+    public List<Order> ordersSalesManByState(String state, Integer id) {
+        return orderRepository.ordersSalesManByState(state, id);
     }
 }

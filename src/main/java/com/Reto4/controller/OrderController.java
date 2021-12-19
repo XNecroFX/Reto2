@@ -62,18 +62,18 @@ public class OrderController {
     }
     
     //Reto4
-    @GetMapping("/{id}")
-    public List<Order>ordersSalesManByID(@PathVariable("id") Integer id){
+    @GetMapping("/salesman/{id}")
+    public List<Order>ordersSalesManByID(@PathVariable("id") int id){
         return orderService.ordersSalesManByID(id);
     }
     
     @GetMapping("/{state}/{id}")
-    public List<Order> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") Integer id){
+    public List<Order> ordersSalesManByState(@PathVariable("state") String state, @PathVariable("id") int id){
         return orderService.ordersSalesManByState(state, id);
     }
     
     @GetMapping("/date/{date}/{id}")
-    public List<Order> ordersSalesManByDate(@PathVariable("date")String dateStr, @PathVariable("id")Integer id){
+    public List<Order> ordersSalesManByDate(@PathVariable("date")String dateStr, @PathVariable("id")int id){
         return orderService.ordersSalesManByDate(dateStr, id);
     }
     
